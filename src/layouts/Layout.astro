@@ -1,0 +1,196 @@
+---
+import { siteConfig } from '../data/siteConfig';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+
+const {
+  title = siteConfig.title,
+  description = siteConfig.subTagline,
+  canonical = siteConfig.url
+} = Astro.props;
+
+// Schema JSON-LD with Unified Graph (#id connections inspired by Ticket Premium audit)
+const schemaData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteConfig.url}/#organization`,
+      "name": siteConfig.name,
+      "url": siteConfig.url,
+      "logo": `${siteConfig.url}/logo.png`,
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+55-51-99786-2095",
+        "contactType": "customer service",
+        "areaServed": "BR",
+        "availableLanguage": "Portuguese"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteConfig.url}/#website`,
+      "url": siteConfig.url,
+      "name": "IPTV 3 Telas e 2 Telas Simultâneas",
+      "description": siteConfig.subTagline,
+      "publisher": { "@id": `${siteConfig.url}/#organization` },
+      "inLanguage": "pt-BR"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${siteConfig.url}/#breadcrumb`,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": siteConfig.url
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Planos IPTV 2 e 3 Telas",
+          "item": `${siteConfig.url}/#planos`
+        }
+      ]
+    },
+    {
+      "@type": "Product",
+      "@id": `${siteConfig.url}/#product`,
+      "name": "Plano IPTV 3 Telas e 2 Telas Simultâneas",
+      "description": "Assinatura IPTV com suporte para 2 e 3 telas simultâneas liberadas para Smart TV, TV Box, Fire Stick e celular com canais 4K, futebol e filmes em um só aplicativo.",
+      "brand": { "@type": "Brand", "name": siteConfig.name },
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "BRL",
+        "lowPrice": "30.00",
+        "highPrice": "240.00",
+        "offerCount": "4",
+        "offers": siteConfig.plans.map(p => ({
+          "@type": "Offer",
+          "name": `Plano ${p.duration} (${p.screens})`,
+          "price": `${p.price}.00`,
+          "priceCurrency": "BRL",
+          "availability": "https://schema.org/InStock",
+          "url": `${siteConfig.url}/#planos`
+        }))
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${siteConfig.url}/#faq`,
+      "mainEntity": siteConfig.faqs.map(item => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.a
+        }
+      }))
+    }
+  ]
+};
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+
+  <!-- Google Site Verification (Original DNS/Site Verification) -->
+  <meta name="google-site-verification" content="z137qpoXfW_HjAhuLB8aszx7jVPDe6Z1JZkMFb75feQ" />
+
+  <!-- Keywords Otimizadas para Ranqueamento: 3 Telas e 2 Telas -->
+  <meta name="keywords" content={siteConfig.seo.keywords} />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+  <!-- OpenGraph -->
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:site_name" content={siteConfig.name} />
+  <meta property="og:image" content={`${siteConfig.url}/og-image.jpg`} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="IPTV 3 Telas e 2 Telas Simultâneas - Cantinho Digital" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={`${siteConfig.url}/og-image.jpg`} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/logo.png" />
+
+  <!-- Preload Critical Images -->
+  <link rel="preload" as="image" href="/hero-devices-v4.png" />
+
+  <!-- Schema.org Graph -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+
+  <style is:global>
+    h1, h2, h3 {
+      text-wrap: balance;
+    }
+
+    @keyframes jewelEntrance {
+      0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+      }
+      70% {
+        transform: translateY(-5px) scale(1.02);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: -200% 0;
+      }
+      100% {
+        background-position: 200% 0;
+      }
+    }
+
+    .jewel-card {
+      animation: jewelEntrance 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .shimmer-text {
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      background-size: 200% 100%;
+      animation: shimmer 3s infinite linear;
+    }
+
+    /* Scroll Snap for cards on small screens */
+    .plans-scroll-snap {
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .plan-snap-card {
+      scroll-snap-align: center;
+    }
+  </style>
+</head>
+<body class="bg-black text-white selection:bg-pink-500 selection:text-white font-sans antialiased overflow-x-hidden">
+  
+  <slot />
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../data/siteConfig';
+---
+
+<Layout
+  title={`Termos de Uso | ${siteConfig.name}`}
+  description="Leia nossos termos de uso para entender as regras e condições de utilização dos serviços do Cantinho Digital."
+  canonical={`${siteConfig.url}/termos-uso`}
+>
+  <div class="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950">
+    <header class="bg-slate-950/80 backdrop-blur-lg border-b border-purple-500/20 py-4">
+      <div class="container mx-auto px-6 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-3">
+          <img src="/logo.png" alt="Cantinho Digital" width="36" height="36" class="rounded-lg" />
+          <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            {siteConfig.name}
+          </span>
+        </a>
+        <a href="/" class="text-sm font-semibold text-gray-300 hover:text-white transition">← Voltar ao Início</a>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-16 max-w-4xl">
+      <h1 class="text-4xl md:text-5xl font-black mb-8 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+        Termos de Uso
+      </h1>
+
+      <div class="space-y-6 text-gray-300">
+        <section class="bg-slate-900/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8">
+          <h2 class="text-2xl font-bold text-white mb-4">1. Aceitação dos Termos</h2>
+          <p class="leading-relaxed">Ao contratar ou utilizar os serviços do Cantinho Digital, você concorda expressamente com os presentes termos. Caso discorde de qualquer cláusula, solicitamos a descontinuação do uso.</p>
+        </section>
+
+        <section class="bg-slate-900/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8">
+          <h2 class="text-2xl font-bold text-white mb-4">2. Descrição do Serviço</h2>
+          <p class="leading-relaxed mb-4">Disponibilizamos planos de transmissão IPTV com as seguintes características:</p>
+          <ul class="list-disc list-inside space-y-2 ml-4">
+            <li>Acesso completo a canais abertos e fechados, futebol ao vivo, filmes e séries</li>
+            <li>Opções de 2 ou 3 telas simultâneas de acordo com o plano escolhido</li>
+            <li>Todo o conteúdo centralizado em um aplicativo intuitivo e compatível</li>
+            <li>Suporte técnico humanizado via WhatsApp</li>
+          </ul>
+        </section>
+
+        <section class="bg-slate-900/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8">
+          <h2 class="text-2xl font-bold text-white mb-4">3. Limite de Telas Simultâneas</h2>
+          <p class="leading-relaxed">O cliente se compromete a respeitar a quantidade contratada de telas conectadas ao mesmo tempo (2 telas para planos Mensal/Trimestral ou 3 telas para Semestral/Anual). Conexões excedentes simultâneas podem acarretar pausa temporária automática na transmissão.</p>
+        </section>
+
+        <section class="bg-slate-900/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8">
+          <h2 class="text-2xl font-bold text-white mb-4">4. Renovação e Cobrança</h2>
+          <ul class="list-disc list-inside space-y-2 ml-4">
+            <li>Os planos são pré-pagos e não possuem renovação automática surpresa no cartão</li>
+            <li>Você só renova se desejar, mantendo total controle do seu dinheiro</li>
+            <li>Disponibilizamos teste grátis prévio para validação da compatibilidade</li>
+          </ul>
+        </section>
+
+        <section class="bg-slate-900/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8">
+          <h2 class="text-2xl font-bold text-white mb-4">5. Requisitos de Rede</h2>
+          <p class="leading-relaxed">Para desfrutar do conteúdo em 4K e Full HD 60FPS sem interrupções, recomendamos conexão de internet estável a partir de 25 Mbps (cabo ou Wi-Fi 5GHz).</p>
+        </section>
+
+        <section class="bg-slate-900/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8">
+          <h2 class="text-2xl font-bold text-white mb-4">6. Suporte</h2>
+          <p class="leading-relaxed">Dúvidas, suporte de configuração ou migração de aparelhos podem ser solicitados a qualquer momento pelo WhatsApp: {siteConfig.whatsapp.display}.</p>
+        </section>
+
+        <p class="text-sm text-gray-500 pt-4">Última atualização: Fevereiro de 2026</p>
+      </div>
+
+      <div class="mt-12">
+        <a
+          href="/"
+          class="inline-block bg-gradient-to-r from-blue-500 to-purple-500 px-8 py-3 rounded-full font-bold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 text-white"
+        >
+          ← Voltar ao Início
+        </a>
+      </div>
+    </main>
+  </div>
+</Layout>

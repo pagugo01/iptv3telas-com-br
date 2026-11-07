@@ -1,0 +1,17 @@
+{
+    "name": "Cantinho Digital - IPTV Premium 3 Telas",
+    "short_name": "Cantinho Digital",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0b1220",
+    "theme_color": "#8b5cf6",
+    "description": "IPTV 3 telas simultâneas para assistir em 3 aparelhos ao mesmo tempo, com teste grátis, canais ao vivo, filmes, séries e suporte humano.",
+    "icons": [
+        {
+            "src": "/logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}

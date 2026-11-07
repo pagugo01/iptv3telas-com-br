@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../data/siteConfig';
+---
+
+<Layout
+  title={`Política de Privacidade | ${siteConfig.name}`}
+  description="Leia a nossa política de privacidade para entender como protegemos seus dados e garantimos a sua segurança ao usar o Cantinho Digital."
+  canonical={`${siteConfig.url}/politica-privacidade`}
+>
+  <div class="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950">
+    <header class="bg-slate-950/80 backdrop-blur-lg border-b border-purple-500/20 py-4">
+      <div class="container mx-auto px-6 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-3">
+          <img src="/logo.png" alt="Cantinho Digital" width="36" height="36" class="rounded-lg" />
+          <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            {siteConfig.name}
+          </span>
+        </a>
+        <a href="/" class="text-sm font-semibold text-gray-300 hover:text-white transition">← Voltar ao Início</a>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-16 max-w-4xl">
+      <h1 class="text-4xl md:text-5xl font-black mb-8 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+        Política de Privacidade
+      </h1>
+
+      <div class="space-y-6 text-gray-300">
+        <section class="bg-slate-900/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8">
+          <h2 class="text-2xl font-bold text-white mb-4">1. Informações que Coletamos</h2>
+          <p class="leading-relaxed mb-4">Coletamos apenas as informações estritamente necessárias para fornecer nosso serviço de IPTV 2 e 3 telas, incluindo:</p>
+          <ul class="list-disc list-inside space-y-2 ml-4">
+            <li>Nome e informações de contato (WhatsApp para entrega de credenciais de acesso)</li>
+            <li>Informações de pagamento processadas por gateways seguros e criptografados</li>
+            <li>Dados técnicos básicos do dispositivo para otimização da rota e qualidade da transmissão</li>
+          </ul>
+        </section>
+
+        <section class="bg-slate-900/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8">
+          <h2 class="text-2xl font-bold text-white mb-4">2. Como Usamos Suas Informações</h2>
+          <p class="leading-relaxed mb-4">Utilizamos suas informações exclusivamente para:</p>
+          <ul class="list-disc list-inside space-y-2 ml-4">
+            <li>Fornecer e manter seu acesso de 2 ou 3 telas simultâneas ativo</li>
+            <li>Processar renovações e gerenciar sua assinatura de forma manual e sem cobrança automática</li>
+            <li>Enviar atualizações sobre novos canais, filmes e melhorias de servidor</li>
+            <li>Prestar atendimento humanizado VIP via WhatsApp</li>
+          </ul>
+        </section>
+
+        <section class="bg-slate-900/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8">
+          <h2 class="text-2xl font-bold text-white mb-4">3. Proteção de Dados e Sigilo</h2>
+          <p class="leading-relaxed">Implementamos rígidas medidas de segurança com criptografia TLS 1.3 para proteger suas informações contra qualquer acesso não autorizado, alteração ou vazamento.</p>
+        </section>
+
+        <section class="bg-slate-900/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8">
+          <h2 class="text-2xl font-bold text-white mb-4">4. Não Compartilhamento</h2>
+          <p class="leading-relaxed">Não vendemos, alugamos nem repassamos dados cadastrais a terceiros ou empresas de publicidade. Seus dados permanecem 100% confidenciais.</p>
+        </section>
+
+        <section class="bg-slate-900/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8">
+          <h2 class="text-2xl font-bold text-white mb-4">5. Seus Direitos (LGPD)</h2>
+          <p class="leading-relaxed mb-4">Em conformidade com a LGPD, você pode a qualquer momento:</p>
+          <ul class="list-disc list-inside space-y-2 ml-4">
+            <li>Solicitar a conferência dos dados vinculados ao seu WhatsApp</li>
+            <li>Solicitar correção de dados incorretos</li>
+            <li>Pedir a exclusão definitiva do histórico ao cancelar o serviço</li>
+          </ul>
+        </section>
+
+        <section class="bg-slate-900/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8">
+          <h2 class="text-2xl font-bold text-white mb-4">6. Atendimento</h2>
+          <p class="leading-relaxed">Para qualquer questão relacionada à privacidade, fale diretamente com nossa equipe no WhatsApp oficial: {siteConfig.whatsapp.display}.</p>
+        </section>
+
+        <p class="text-sm text-gray-500 pt-4">Última atualização: Fevereiro de 2026</p>
+      </div>
+
+      <div class="mt-12">
+        <a
+          href="/"
+          class="inline-block bg-gradient-to-r from-blue-500 to-purple-500 px-8 py-3 rounded-full font-bold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 text-white"
+        >
+          ← Voltar ao Início
+        </a>
+      </div>
+    </main>
+  </div>
+</Layout>

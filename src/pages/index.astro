@@ -1,0 +1,729 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../data/siteConfig';
+
+const whatsappBase = `https://wa.me/${siteConfig.whatsapp.number}`;
+---
+
+<Layout>
+  <!-- SPLASH MODAL (Atendimento Humano) -->
+  <div id="splash-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/75 backdrop-blur-md transition-opacity duration-500">
+    <div id="splash-card" class="relative max-w-[360px] md:max-w-[440px] w-[92%] jewel-card transition-all duration-500">
+      <!-- Glossy Border Effect -->
+      <div class="absolute -inset-[2px] bg-gradient-to-r from-pink-500 via-purple-600 to-cyan-400 rounded-[2.2rem] md:rounded-[2.7rem] opacity-70 blur-[1px]"></div>
+
+      <div class="relative bg-slate-900 rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-12 shadow-[0_0_50px_-10px_rgba(236,72,153,0.3)] text-center overflow-hidden">
+        <!-- Internal Accent Glow -->
+        <div class="absolute -top-20 -right-20 w-40 h-40 bg-pink-500/20 rounded-full blur-[60px]"></div>
+
+        <!-- Icon Section -->
+        <div class="relative w-16 h-16 md:w-20 md:h-20 bg-white/5 rounded-3xl flex items-center justify-center text-4xl md:text-5xl mb-8 mx-auto border border-white/10 shadow-inner">
+          <span class="drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">🤝</span>
+        </div>
+
+        <h2 class="text-3xl md:text-5xl font-black text-white mb-4 tracking-tighter leading-[0.9] uppercase italic">
+          Atendimento <br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 drop-shadow-[0_2px_10px_rgba(236,72,153,0.4)]">Humano</span>
+        </h2>
+
+        <p class="text-base md:text-lg text-slate-300 leading-tight font-bold mb-10 px-2 tracking-tight">
+          Aqui você é prioridade. <br />
+          <span class="text-cyan-400">Suporte real feito por pessoas para 2 e 3 telas.</span>
+        </p>
+
+        <button
+          id="btn-enter-site"
+          type="button"
+          class="group relative w-full max-w-[260px] mx-auto py-3.5 bg-gradient-to-r from-pink-600 to-purple-700 text-white font-black text-sm md:text-base rounded-xl md:rounded-2xl hover:scale-[1.05] active:scale-[0.95] transition-all shadow-[0_15px_30px_-5px_rgba(236,72,153,0.4)] uppercase tracking-widest overflow-hidden flex items-center justify-center gap-2 cursor-pointer"
+        >
+          <div class="absolute inset-0 shimmer-text opacity-30"></div>
+          <span class="relative">Entre no Site 🚀</span>
+        </button>
+
+        <!-- Security Badge -->
+        <div class="mt-8 flex items-center justify-center gap-2">
+          <div class="flex -space-x-2">
+            <div class="w-5 h-5 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center text-[8px]">✨</div>
+            <div class="w-5 h-5 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center text-[8px]">✨</div>
+            <div class="w-5 h-5 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center text-[8px]">✨</div>
+          </div>
+          <span class="text-[10px] text-slate-500 font-black uppercase tracking-widest">Qualidade Premium 4K</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="min-h-screen bg-black">
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-xl border-b border-pink-500/30 shadow-lg shadow-pink-500/20">
+      <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-3">
+          <img src="/logo.png" alt="Cantinho Digital IPTV 3 Telas" width="45" height="45" class="rounded-xl shadow-lg shadow-purple-500/50" />
+          <span class="text-2xl font-black bg-gradient-to-r from-cyan-400 via-pink-500 to-yellow-400 bg-clip-text text-transparent">
+            {siteConfig.name}
+          </span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#planos" class="text-gray-200 hover:text-pink-400 transition-colors font-semibold">Planos 2 e 3 Telas</a>
+          <a href="#comparativo" class="text-gray-200 hover:text-pink-400 transition-colors font-semibold">Comparativo</a>
+          <a href="#como-funciona" class="text-gray-200 hover:text-pink-400 transition-colors font-semibold">Como Funciona</a>
+          <a href="#faq" class="text-gray-200 hover:text-pink-400 transition-colors font-semibold">FAQ</a>
+          <a
+            href={`${whatsappBase}?text=${encodeURIComponent(siteConfig.whatsapp.defaultMsg)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="relative group"
+          >
+            <div class="absolute -inset-1 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-300 animate-pulse"></div>
+            <div class="relative bg-black px-8 py-3 rounded-full font-bold text-white flex items-center gap-2">
+              <span>💬 WhatsApp</span>
+            </div>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- PROMO BANNER with Countdown -->
+    <section class="pt-24 pb-8 px-6 bg-gradient-to-r from-pink-600 via-purple-600 to-cyan-600 relative overflow-hidden">
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="container mx-auto max-w-6xl relative z-10">
+        <div class="text-center">
+          <div class="text-3xl md:text-5xl font-black text-white mb-6 animate-pulse">
+            🔥 OFERTA RELÂMPAGO - HOJE APENAS! 🔥
+          </div>
+          <p class="text-xl md:text-2xl text-yellow-300 mb-8 font-bold">
+            Planos de IPTV com 2 e 3 Telas Simultâneas com até 50% de Desconto!
+          </p>
+          <div class="flex justify-center gap-4 mb-6">
+            <div class="bg-black/80 backdrop-blur-sm px-6 py-4 rounded-2xl border-2 border-pink-500 shadow-2xl shadow-pink-500/50 min-w-[90px] md:min-w-[120px]">
+              <div id="timer-hours" class="text-4xl md:text-6xl font-black text-pink-400">06</div>
+              <div class="text-xs md:text-sm text-gray-300 uppercase tracking-wider font-semibold">Horas</div>
+            </div>
+            <div class="bg-black/80 backdrop-blur-sm px-6 py-4 rounded-2xl border-2 border-purple-500 shadow-2xl shadow-purple-500/50 min-w-[90px] md:min-w-[120px]">
+              <div id="timer-minutes" class="text-4xl md:text-6xl font-black text-purple-400">00</div>
+              <div class="text-xs md:text-sm text-gray-300 uppercase tracking-wider font-semibold">Minutos</div>
+            </div>
+            <div class="bg-black/80 backdrop-blur-sm px-6 py-4 rounded-2xl border-2 border-cyan-500 shadow-2xl shadow-cyan-500/50 min-w-[90px] md:min-w-[120px]">
+              <div id="timer-seconds" class="text-4xl md:text-6xl font-black text-cyan-400">00</div>
+              <div class="text-xs md:text-sm text-gray-300 uppercase tracking-wider font-semibold">Segundos</div>
+            </div>
+          </div>
+          <a
+            href="#planos"
+            class="inline-block w-full sm:w-auto bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 px-8 py-4 md:px-12 md:py-5 rounded-full text-xl md:text-2xl font-black text-white hover:scale-105 transition-all duration-300 shadow-2xl shadow-pink-500/50 animate-bounce"
+          >
+            QUERO APROVEITAR! 🚀
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hero Section with Image -->
+    <section class="py-20 px-6 bg-gradient-to-br from-slate-950 via-purple-950 to-pink-950 relative overflow-hidden">
+      <!-- Animated background -->
+      <div class="absolute inset-0 opacity-30 pointer-events-none">
+        <div class="absolute top-0 left-0 w-96 h-96 bg-pink-500 rounded-full filter blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500 rounded-full filter blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/2 left-1/2 w-96 h-96 bg-purple-500 rounded-full filter blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+      </div>
+
+      <div class="container mx-auto max-w-7xl relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <!-- Left: Text -->
+          <div class="space-y-8 text-center lg:text-left">
+            <div class="inline-block">
+              <span class="bg-gradient-to-r from-cyan-400 via-pink-400 to-yellow-400 px-6 py-3 rounded-full text-lg font-black animate-pulse shadow-lg shadow-pink-500/50 text-slate-950">
+                ✨ TESTE GRÁTIS DISPONÍVEL ✨
+              </span>
+            </div>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tight">
+              <span class="bg-gradient-to-r from-cyan-400 via-pink-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-2xl">
+                IPTV
+              </span>
+              <br />
+              <span class="text-white drop-shadow-2xl">PREMIUM</span>
+              <br />
+              <span class="bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent text-5xl md:text-7xl lg:text-8xl filter drop-shadow-[0_0_15px_rgba(236,72,153,0.5)]">
+                2 E 3 TELAS
+              </span>
+            </h1>
+            <p class="text-2xl md:text-3xl text-gray-200 font-bold leading-relaxed">
+              Assista <span class="text-pink-400">canais ao vivo</span>, <span class="text-cyan-400">filmes</span>, <span class="text-yellow-400">séries</span> e <span class="text-green-400">esportes</span> em <strong class="text-white">qualidade 4K</strong> simultaneamente!
+            </p>
+            <div class="bg-gradient-to-r from-pink-900/40 via-purple-900/40 to-cyan-900/40 border border-pink-500/30 rounded-2xl p-4 text-left">
+              <p class="text-lg md:text-xl text-yellow-300 font-bold mb-1">
+                ⭐ Todo o conteúdo em um único aplicativo!
+              </p>
+              <p class="text-sm md:text-base text-gray-300">
+                Sem complicação: o cliente vê tudo reunido em um só app leve para Smart TV, TV Box, Fire Stick e celular.
+              </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start w-full">
+              <a
+                href="#planos"
+                class="relative group w-full sm:w-auto text-center"
+              >
+                <div class="absolute -inset-1 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+                <div class="relative bg-gradient-to-r from-pink-600 to-purple-600 px-8 py-4 md:px-12 md:py-5 rounded-full text-xl md:text-2xl font-black text-white shadow-2xl">
+                  VER PLANOS 🔥
+                </div>
+              </a>
+              <a
+                href={`${whatsappBase}?text=${encodeURIComponent('Quero fazer um teste grátis de IPTV 2 e 3 telas! Vim do iptv3telas.com.br')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto text-center bg-white/10 backdrop-blur-sm border-2 border-white/30 px-8 py-4 md:px-10 md:py-5 rounded-full text-lg md:text-xl font-bold text-white hover:bg-white/20 transition-all duration-300 flex items-center justify-center"
+              >
+                Teste Grátis 🎁
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Hero Image -->
+          <div class="relative flex justify-center">
+            <div class="absolute -inset-4 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 rounded-3xl blur-2xl opacity-50 animate-pulse"></div>
+            <img
+              src="/hero-devices-v4.png"
+              alt="Assinatura IPTV Premium Cantinho Digital em 2 e 3 Telas Smart TV e Celular"
+              width="800"
+              height="600"
+              class="relative rounded-3xl shadow-2xl shadow-pink-500/50 w-full max-w-[650px] object-cover"
+              loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEO Intent Section: IPTV 3 Telas & 2 Telas Simultâneas -->
+    <section class="py-16 px-6 bg-black border-y border-pink-500/20">
+      <div class="container mx-auto max-w-6xl">
+        <div class="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-10 items-center">
+          <div>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-pink-500/15 border border-pink-500/40 text-pink-300 px-4 py-1.5 rounded-full font-black uppercase tracking-wider text-xs">
+                IPTV 3 Telas Simultâneas
+              </span>
+              <span class="bg-cyan-500/15 border border-cyan-500/40 text-cyan-300 px-4 py-1.5 rounded-full font-black uppercase tracking-wider text-xs">
+                IPTV 2 Telas Simultâneas
+              </span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+              Plano IPTV 3 telas e 2 telas para a casa toda assistir ao mesmo tempo
+            </h2>
+            <p class="text-xl text-gray-300 leading-relaxed mb-5">
+              Procurando <strong>IPTV 3 telas simultâneas</strong> ou <strong>IPTV 2 telas simultâneas</strong>? Aqui você assiste na Smart TV da sala, no quarto e no celular sem precisar escolher quem vai usar primeiro. Ideal para família, casal ou quem deseja dividir o acesso em múltiplos aparelhos sem quedas.
+            </p>
+            <p class="text-lg text-gray-400 leading-relaxed mb-6">
+              Muitos usuários buscam no Google por <strong class="text-white">“IPTV 3 telas ao mesmo tempo”</strong>, <strong class="text-white">“IPTV 2 telas ao mesmo tempo”</strong>, <strong class="text-white">“IPTV três telas”</strong>, <strong class="text-white">“IPTV duas telas”</strong>, <strong class="text-white">“IPTV 3 aparelhos”</strong> ou digitam termos populares como <strong class="text-white">“ptv 3 telas”</strong> e <strong class="text-white">“IPTV 3 telas simuntanea”</strong>. Na Cantinho Digital, nossos servidores contam com balanceamento inteligente para garantir transmissão fluida em até 3 telas sem nenhum travamento.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                "Teste IPTV 2 e 3 telas pelo WhatsApp",
+                "2 e 3 telas ao mesmo tempo no mesmo plano",
+                "Canais ao vivo, Premiere, UFC e ESPN em 4K",
+                "Compatível com Smart TV, TV Box e Fire TV",
+                "Suporte humano direto para ativar em minutos",
+                "Todo o conteúdo reunido em 1 aplicativo só"
+              ].map((item) => (
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-4 text-white font-bold flex items-center gap-3">
+                  <span class="text-green-400 text-xl font-black">✓</span>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-br from-pink-900/40 via-purple-900/40 to-cyan-900/30 border-2 border-pink-500/40 rounded-3xl p-8 md:p-10 shadow-2xl shadow-pink-500/20">
+            <div class="text-center">
+              <div class="text-6xl mb-4">📺 📱 💻</div>
+              <h3 class="text-3xl font-black text-white mb-3">Até 3 telas liberadas</h3>
+              <p class="text-gray-300 text-lg mb-6">
+                TV da sala, TV do quarto e smartphone conectados simultaneamente, com qualidade 4K nativa e sem necessidade de cabos ou antenas.
+              </p>
+              <a
+                href={`${whatsappBase}?text=${encodeURIComponent('Quero um plano IPTV 2 ou 3 telas simultâneas. Vim do Google.')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block w-full bg-gradient-to-r from-pink-600 to-purple-600 px-8 py-4 rounded-2xl font-black text-xl text-white hover:scale-105 transition-all duration-300 shadow-lg shadow-pink-500/40 text-center"
+              >
+                Quero Teste 2 e 3 Telas 🚀
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section - PREMIUM CARDS -->
+    <section id="planos" class="py-20 px-6 bg-gradient-to-br from-purple-950 via-pink-950 to-slate-950 relative overflow-hidden">
+      <div class="absolute inset-0 opacity-20 pointer-events-none">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-pink-500 rounded-full filter blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500 rounded-full filter blur-3xl"></div>
+      </div>
+
+      <div class="container mx-auto max-w-7xl relative z-10">
+        <div class="text-center mb-16">
+          <h2 class="text-5xl md:text-7xl font-black mb-4">
+            <span class="bg-gradient-to-r from-cyan-400 via-pink-500 to-yellow-400 bg-clip-text text-transparent">
+              ESCOLHA SEU PLANO
+            </span>
+          </h2>
+          <p class="text-2xl text-yellow-300 font-bold animate-pulse">
+            🔥 Oferta com Desconto Válida Apenas Hoje! 🔥
+          </p>
+          <p class="text-xl text-white mt-4 font-semibold">
+            👉 Opções com <span class="text-cyan-400 font-black">2 TELAS</span> e <span class="text-pink-400 font-black">3 TELAS SIMULTÂNEAS LIBERADAS</span>
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {siteConfig.plans.map((plan) => {
+            const discount = Math.round((1 - parseInt(plan.price) / parseInt(plan.oldPrice)) * 100);
+            return (
+              <div
+                class={`relative bg-black/80 backdrop-blur-lg border-4 ${plan.popular ? 'border-pink-500 scale-105 md:scale-110' : 'border-white/20'} rounded-3xl p-8 hover:scale-105 transition-all duration-300 ${plan.popular ? 'shadow-2xl ' + plan.shadow : ''} flex flex-col justify-between`}
+              >
+                {plan.popular && (
+                  <>
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 w-max bg-gradient-to-r from-pink-600 via-orange-500 to-yellow-500 px-6 py-2 rounded-full font-black text-sm md:text-base animate-pulse shadow-lg shadow-pink-500/50 z-20 uppercase tracking-wider border border-white/20 text-white">
+                      ⭐ Mais Vendido 🔥
+                    </div>
+                    <div class="absolute -inset-[2px] bg-gradient-to-r from-pink-500 via-yellow-500 to-cyan-500 rounded-[26px] blur-sm opacity-70 animate-pulse pointer-events-none"></div>
+                  </>
+                )}
+
+                <div class="relative">
+                  <h3 class="text-3xl font-black text-white mb-2 text-center">{plan.duration}</h3>
+                  
+                  <!-- Screen Badge -->
+                  <div class="text-center mb-4">
+                    <span class={`inline-block px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider ${plan.screens.includes('3') ? 'bg-pink-500/20 text-pink-300 border border-pink-500/40' : 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'}`}>
+                      📱 {plan.screens}
+                    </span>
+                  </div>
+
+                  <div class="text-center mb-6">
+                    {plan.oldPrice && (
+                      <div class="text-2xl text-gray-500 line-through mb-2">De R$ {plan.oldPrice}</div>
+                    )}
+                    <div class={`text-6xl font-black bg-gradient-to-r ${plan.color} bg-clip-text text-transparent mb-2`}>
+                      R$ {plan.price}
+                    </div>
+                    {plan.oldPrice && (
+                      <div class="inline-block bg-red-600 text-white px-4 py-1.5 rounded-full font-bold text-sm animate-pulse">
+                        -{discount}% OFF
+                      </div>
+                    )}
+                  </div>
+
+                  <p class={`text-xl font-bold text-center mb-6 ${plan.popular ? 'text-yellow-300' : 'text-gray-300'}`}>
+                    {plan.desc}
+                  </p>
+
+                  <ul class="space-y-3 mb-8">
+                    <li class="flex items-center gap-3 text-white">
+                      <span class="text-green-400 text-2xl font-bold">✓</span>
+                      <span class="font-bold text-yellow-300">{plan.screens}</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-white">
+                      <span class="text-green-400 text-2xl font-bold">✓</span>
+                      <span class="font-semibold">Qualidade 4K Ultra HD & 60FPS</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-white">
+                      <span class="text-green-400 text-2xl font-bold">✓</span>
+                      <span class="font-semibold">Todo o Conteúdo em 1 App Só</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-white">
+                      <span class="text-green-400 text-2xl font-bold">✓</span>
+                      <span class="font-semibold">Canais + Futebol + Filmes & Séries</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-white">
+                      <span class="text-green-400 text-2xl font-bold">✓</span>
+                      <span class="font-semibold">Suporte VIP via WhatsApp</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-white">
+                      <span class="text-green-400 text-2xl font-bold">✓</span>
+                      <span class="font-semibold">Servidor Anti-Travamento CDN</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-white">
+                      <span class="text-green-400 text-2xl font-bold">✓</span>
+                      <span class="font-semibold">Sem Contrato e Sem Fidelidade</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="relative pt-4">
+                  <a
+                    href={`${whatsappBase}?text=${encodeURIComponent(siteConfig.whatsapp.planMsg(plan.duration, plan.price, plan.screens))}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class={`block w-full text-center bg-gradient-to-r ${plan.color} px-8 py-4 rounded-2xl font-black text-xl text-white hover:scale-105 shadow-2xl ${plan.shadow} transition-all duration-300`}
+                  >
+                    ASSINAR AGORA! 🚀
+                  </a>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <!-- Semantic Comparison Table (Técnica do TicketPremium Auditado) -->
+    <section id="comparativo" class="py-20 px-6 bg-black border-y border-pink-500/20">
+      <div class="container mx-auto max-w-5xl">
+        <div class="text-center mb-12">
+          <span class="bg-cyan-500/15 border border-cyan-500/40 text-cyan-300 px-5 py-2 rounded-full font-black uppercase tracking-wider text-xs inline-block mb-4">
+            Comparativo Oficial
+          </span>
+          <h2 class="text-4xl md:text-5xl font-black text-white">
+            Qual a Diferença: 1 Tela vs 2 Telas vs 3 Telas Simultâneas?
+          </h2>
+          <p class="text-gray-400 mt-4 text-lg">
+            Compare os recursos e descubra qual modelo atende melhor sua residência.
+          </p>
+        </div>
+
+        <div class="overflow-x-auto rounded-3xl border border-pink-500/30 bg-slate-900/60 backdrop-blur-md">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-white/10 bg-slate-950/80 text-sm md:text-base">
+                <th class="p-4 md:p-6 text-white font-black">Recurso / Benefício</th>
+                <th class="p-4 md:p-6 text-gray-400 font-bold text-center">1 Tela Comum</th>
+                <th class="p-4 md:p-6 text-cyan-400 font-black text-center bg-cyan-950/20">2 Telas Simultâneas</th>
+                <th class="p-4 md:p-6 text-pink-400 font-black text-center bg-pink-950/30">3 Telas Simultâneas 🔥</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/10 text-sm md:text-base text-gray-200">
+              <tr>
+                <td class="p-4 md:p-6 font-bold text-white">Aparelhos Conectados ao Mesmo Tempo</td>
+                <td class="p-4 md:p-6 text-center text-gray-400">Apenas 1 aparelho</td>
+                <td class="p-4 md:p-6 text-center font-bold text-cyan-300 bg-cyan-950/10">Até 2 aparelhos</td>
+                <td class="p-4 md:p-6 text-center font-black text-pink-300 bg-pink-950/20">Até 3 aparelhos simultâneos</td>
+              </tr>
+              <tr>
+                <td class="p-4 md:p-6 font-bold text-white">Ideal Para</td>
+                <td class="p-4 md:p-6 text-center text-gray-400">Pessoas solteiras</td>
+                <td class="p-4 md:p-6 text-center text-cyan-300 bg-cyan-950/10">Casal / 2 Cômodos</td>
+                <td class="p-4 md:p-6 text-center font-bold text-pink-300 bg-pink-950/20">Família Completa / Sala + Quarto + Mobile</td>
+              </tr>
+              <tr>
+                <td class="p-4 md:p-6 font-bold text-white">Todo o Conteúdo em 1 Só App</td>
+                <td class="p-4 md:p-6 text-center text-green-400 font-bold">✓ Sim</td>
+                <td class="p-4 md:p-6 text-center text-green-400 font-bold bg-cyan-950/10">✓ Sim</td>
+                <td class="p-4 md:p-6 text-center text-green-400 font-black bg-pink-950/20">✓ Sim (Grade Unificada)</td>
+              </tr>
+              <tr>
+                <td class="p-4 md:p-6 font-bold text-white">Canais 4K + Futebol Ao Vivo + Filmes</td>
+                <td class="p-4 md:p-6 text-center text-green-400 font-bold">✓ Sim</td>
+                <td class="p-4 md:p-6 text-center text-green-400 font-bold bg-cyan-950/10">✓ Sim (60 FPS)</td>
+                <td class="p-4 md:p-6 text-center text-green-400 font-black bg-pink-950/20">✓ Sim (60 FPS Dedicado)</td>
+              </tr>
+              <tr>
+                <td class="p-4 md:p-6 font-bold text-white">Dispositivos Compatíveis</td>
+                <td class="p-4 md:p-6 text-center text-gray-400">Smart TV ou Celular</td>
+                <td class="p-4 md:p-6 text-center text-gray-200 bg-cyan-950/10">Smart TV + Celular / TV Box</td>
+                <td class="p-4 md:p-6 text-center text-white font-bold bg-pink-950/20">Smart TV + TV Box + Celular / Tablet / PC</td>
+              </tr>
+              <tr>
+                <td class="p-4 md:p-6 font-bold text-white">Atendimento Humano no WhatsApp</td>
+                <td class="p-4 md:p-6 text-center text-green-400 font-bold">✓ Padrão</td>
+                <td class="p-4 md:p-6 text-center text-green-400 font-bold bg-cyan-950/10">✓ Prioritário</td>
+                <td class="p-4 md:p-6 text-center text-yellow-300 font-black bg-pink-950/20">⭐ VIP Imediato</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 px-6 bg-black">
+      <div class="container mx-auto max-w-6xl">
+        <h2 class="text-4xl md:text-6xl font-black text-center mb-16">
+          <span class="bg-gradient-to-r from-cyan-400 via-pink-500 to-yellow-400 bg-clip-text text-transparent">
+            Por que escolher a {siteConfig.name}?
+          </span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Feature Card - Human Support -->
+          <div class="group relative bg-gradient-to-br from-green-900/30 to-emerald-900/30 backdrop-blur-sm border-2 border-green-500/50 rounded-3xl p-8 hover:scale-105 transition-all duration-300 overflow-hidden md:col-span-2 lg:col-span-1">
+            <div class="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-3xl blur opacity-0 group-hover:opacity-50 transition duration-300"></div>
+            <div class="relative z-10">
+              <div class="text-6xl mb-4">🤝</div>
+              <h3 class="text-3xl font-black text-white mb-4">ATENDIMENTO HUMANO</h3>
+              <p class="text-gray-300 text-lg">Aqui você não fala com robô! Suporte 100% humanizado e rápido no WhatsApp para resolver tudo na hora.</p>
+            </div>
+          </div>
+
+          <!-- Feature Card 1 -->
+          <div class="group relative bg-gradient-to-br from-pink-900/30 to-purple-900/30 backdrop-blur-sm border-2 border-pink-500/50 rounded-3xl p-8 hover:scale-105 transition-all duration-300 overflow-hidden">
+            <div class="absolute -inset-1 bg-gradient-to-r from-pink-500 to-purple-500 rounded-3xl blur opacity-0 group-hover:opacity-50 transition duration-300"></div>
+            <div class="relative z-10">
+              <div class="text-6xl mb-4">⚡</div>
+              <h3 class="text-3xl font-black text-white mb-4">ULTRA RÁPIDO</h3>
+              <p class="text-gray-300 text-lg">Streaming em 4K sem travamentos. Servidores com tecnologia anti-bloqueio para assistir sem interrupções!</p>
+            </div>
+          </div>
+
+          <!-- Feature Card 2 with Image -->
+          <div class="group relative rounded-3xl overflow-hidden hover:scale-105 transition-all duration-300 border-2 border-cyan-500/40">
+            <div class="absolute -inset-1 bg-gradient-to-r from-green-500 to-cyan-500 rounded-3xl blur opacity-50 group-hover:opacity-75 transition duration-300"></div>
+            <div class="relative">
+              <img src="/sports.png" alt="Esportes ao vivo em 4K no Cantinho Digital" width="600" height="400" class="w-full h-80 object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent p-8 flex flex-col justify-end">
+                <div class="text-5xl mb-3">⚽</div>
+                <h3 class="text-3xl font-black text-white mb-2">ESPORTES AO VIVO</h3>
+                <p class="text-gray-200 text-lg font-semibold">Futebol ao vivo, UFC, Champions League, Libertadores e Premiere em HD e 4K!</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature Card 3 -->
+          <div class="group relative bg-gradient-to-br from-cyan-900/30 to-blue-900/30 backdrop-blur-sm border-2 border-cyan-500/50 rounded-3xl p-8 hover:scale-105 transition-all duration-300 overflow-hidden">
+            <div class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-3xl blur opacity-0 group-hover:opacity-50 transition duration-300"></div>
+            <div class="relative z-10">
+              <div class="text-6xl mb-4">🎬</div>
+              <h3 class="text-3xl font-black text-white mb-4">FILMES & SÉRIES</h3>
+              <p class="text-gray-300 text-lg">Catálogo gigante com lançamentos e clássicos. Todo o conteúdo reunido em um só aplicativo!</p>
+            </div>
+          </div>
+
+          <!-- Feature Card 4 -->
+          <div class="group relative bg-gradient-to-br from-yellow-900/30 to-orange-900/30 backdrop-blur-sm border-2 border-yellow-500/50 rounded-3xl p-8 hover:scale-105 transition-all duration-300 overflow-hidden">
+            <div class="absolute -inset-1 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-3xl blur opacity-0 group-hover:opacity-50 transition duration-300"></div>
+            <div class="relative z-10">
+              <div class="text-6xl mb-4">📱</div>
+              <h3 class="text-3xl font-black text-white mb-4">2 E 3 TELAS SIMULTÂNEAS</h3>
+              <p class="text-gray-300 text-lg">Assista em Smart TV, celular e tablet ao mesmo tempo sem bloqueio de tela. Liberdade completa!</p>
+            </div>
+          </div>
+
+          <!-- Feature Card 5 -->
+          <div class="group relative bg-gradient-to-br from-purple-900/30 to-indigo-900/30 backdrop-blur-sm border-2 border-purple-500/50 rounded-3xl p-8 hover:scale-105 transition-all duration-300 overflow-hidden">
+            <div class="absolute -inset-1 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-3xl blur opacity-0 group-hover:opacity-50 transition duration-300"></div>
+            <div class="relative z-10">
+              <div class="text-6xl mb-4">🚀</div>
+              <h3 class="text-3xl font-black text-white mb-4">TUDO EM 1 APP</h3>
+              <p class="text-gray-300 text-lg">Sem precisar trocar de app ou pagar várias assinaturas. O cliente vê tudo em uma única plataforma.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 px-6 bg-black">
+      <div class="container mx-auto max-w-6xl">
+        <h2 class="text-4xl md:text-6xl font-black text-center mb-16">
+          <span class="bg-gradient-to-r from-cyan-400 via-pink-500 to-yellow-400 bg-clip-text text-transparent">
+            O que dizem nossos clientes
+          </span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {siteConfig.testimonials.map((testimonial) => (
+            <div class="bg-gradient-to-br from-purple-900/50 to-pink-900/50 backdrop-blur-sm border-2 border-pink-500/30 rounded-3xl p-8 hover:scale-105 hover:border-pink-500 transition-all duration-300 shadow-xl shadow-pink-500/20 flex flex-col items-center text-center">
+              <div class="relative w-24 h-24 mb-4 rounded-full overflow-hidden border-4 border-pink-500 shadow-lg shadow-pink-500/50">
+                <img
+                  src={testimonial.avatar}
+                  alt={testimonial.name}
+                  width="96"
+                  height="96"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="text-yellow-400 text-3xl mb-4">
+                {"⭐".repeat(testimonial.stars)}
+              </div>
+              <p class="text-gray-200 mb-6 italic text-lg leading-relaxed">"{testimonial.text}"</p>
+              <p class="text-pink-400 font-black text-xl">— {testimonial.name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- How it Works -->
+    <section id="como-funciona" class="py-20 px-6 bg-gradient-to-br from-slate-950 via-purple-950 to-pink-950">
+      <div class="container mx-auto max-w-6xl">
+        <h2 class="text-4xl md:text-6xl font-black text-center mb-16">
+          <span class="bg-gradient-to-r from-cyan-400 via-pink-500 to-yellow-400 bg-clip-text text-transparent">
+            Como Funciona?
+          </span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+          {[
+            { step: "1", icon: "🎯", title: "Escolha seu Plano", desc: "Selecione o plano ideal com 2 ou 3 telas simultâneas", color: "from-cyan-500 to-blue-500" },
+            { step: "2", icon: "💬", title: "Fale no WhatsApp", desc: "Entre em contato e receba atendimento humano imediato", color: "from-pink-500 to-purple-500" },
+            { step: "3", icon: "🎉", title: "Comece a Assistir", desc: "Receba seu acesso em 5 minutos e assista em múltiplos aparelhos!", color: "from-yellow-500 to-orange-500" }
+          ].map((item) => (
+            <div class="text-center group">
+              <div class={`relative w-32 h-32 bg-gradient-to-br ${item.color} rounded-full flex items-center justify-center text-6xl mx-auto mb-8 shadow-2xl group-hover:scale-110 transition-all duration-300`}>
+                <div class="absolute -inset-2 bg-gradient-to-r from-pink-500 to-cyan-500 rounded-full blur-xl opacity-50 group-hover:opacity-100 transition duration-300"></div>
+                <div class="relative">{item.icon}</div>
+              </div>
+              <div class={`inline-block bg-gradient-to-r ${item.color} text-white text-2xl font-black px-6 py-2 rounded-full mb-4 shadow-lg`}>
+                PASSO {item.step}
+              </div>
+              <h3 class="text-3xl font-black text-white mb-4">{item.title}</h3>
+              <p class="text-gray-300 text-xl">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ (HTML5 nativo <details> e <summary> conforme técnica do TicketPremium) -->
+    <section id="faq" class="py-20 px-6 bg-black">
+      <div class="container mx-auto max-w-4xl">
+        <h2 class="text-4xl md:text-6xl font-black text-center mb-16">
+          <span class="bg-gradient-to-r from-cyan-400 via-pink-500 to-yellow-400 bg-clip-text text-transparent">
+            Perguntas Frequentes
+          </span>
+        </h2>
+
+        <div class="space-y-6">
+          {siteConfig.faqs.map((faq) => (
+            <details class="group bg-gradient-to-br from-purple-900/30 to-pink-900/30 backdrop-blur-sm border-2 border-pink-500/30 rounded-3xl p-8 hover:border-pink-500 transition-all duration-300 shadow-xl shadow-pink-500/10">
+              <summary class="text-2xl font-black text-white cursor-pointer list-none flex items-center justify-between">
+                <span class="flex items-center gap-4">
+                  <span class="text-pink-400">❓</span>
+                  {faq.q}
+                </span>
+                <span class="text-pink-400 group-open:rotate-180 transition-transform duration-300 text-3xl">▼</span>
+              </summary>
+              <p class="text-gray-300 mt-6 leading-relaxed text-xl pl-12">{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 bg-gradient-to-br from-slate-950 to-purple-950 border-t-4 border-pink-500">
+      <div class="container mx-auto max-w-6xl">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <img src="/logo.png" alt="Cantinho Digital" width="40" height="40" class="rounded-xl" />
+              <span class="text-2xl font-black bg-gradient-to-r from-cyan-400 to-pink-400 bg-clip-text text-transparent">
+                {siteConfig.name}
+              </span>
+            </div>
+            <p class="text-gray-300 text-lg">IPTV Premium com qualidade 4K, 2 e 3 telas simultâneas e estabilidade garantida.</p>
+          </div>
+          <div>
+            <h3 class="text-white font-black mb-4 text-xl">Links Rápidos</h3>
+            <ul class="space-y-2 text-gray-300 text-lg">
+              <li><a href="#planos" class="hover:text-pink-400 transition-colors">⚡ Planos 2 e 3 Telas</a></li>
+              <li><a href="#comparativo" class="hover:text-pink-400 transition-colors">📊 Comparativo</a></li>
+              <li><a href="#como-funciona" class="hover:text-pink-400 transition-colors">📋 Como Funciona</a></li>
+              <li><a href="#faq" class="hover:text-pink-400 transition-colors">❓ FAQ</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-white font-black mb-4 text-xl">Legal</h3>
+            <ul class="space-y-2 text-gray-300 text-lg">
+              <li><a href="/politica-privacidade" class="hover:text-pink-400 transition-colors">🔒 Política de Privacidade</a></li>
+              <li><a href="/termos-uso" class="hover:text-pink-400 transition-colors">📄 Termos de Uso</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="text-center text-gray-400 pt-8 border-t border-pink-500/30 text-lg">
+          <p>© 2026 {siteConfig.name} ({siteConfig.domain}). Todos os direitos reservados. 🚀</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a
+      href={`${whatsappBase}?text=${encodeURIComponent('Olá! Vim do iptv3telas.com.br e quero saber mais sobre os planos de 2 e 3 telas.')}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="fixed bottom-8 right-8 z-50 group"
+      aria-label="Fale conosco pelo WhatsApp"
+    >
+      <div class="absolute -inset-3 bg-gradient-to-r from-green-400 to-green-600 rounded-full blur-xl opacity-75 group-hover:opacity-100 animate-pulse"></div>
+      <div class="relative bg-gradient-to-br from-green-500 to-green-600 w-20 h-20 rounded-full flex items-center justify-center text-5xl shadow-2xl hover:scale-110 transition-all duration-300">
+        💬
+      </div>
+    </a>
+  </div>
+
+  <!-- CLIENT-SIDE SCRIPT FOR MODAL & COUNTDOWN -->
+  <script is:inline>
+    // Splash modal control
+    const splashModal = document.getElementById('splash-modal');
+    const splashCard = document.getElementById('splash-card');
+    const btnEnter = document.getElementById('btn-enter-site');
+
+    if (splashModal && btnEnter) {
+      document.body.style.overflow = 'hidden';
+
+      btnEnter.addEventListener('click', () => {
+        if (splashCard) {
+          splashCard.classList.add('scale-110', 'opacity-0', 'blur-xl');
+        }
+        if (splashModal) {
+          splashModal.classList.add('opacity-0');
+          setTimeout(() => {
+            splashModal.style.display = 'none';
+            document.body.style.overflow = 'unset';
+          }, 500);
+        }
+      });
+    }
+
+    // 6-Hour Countdown Timer
+    function initCountdown() {
+      const hoursEl = document.getElementById('timer-hours');
+      const minutesEl = document.getElementById('timer-minutes');
+      const secondsEl = document.getElementById('timer-seconds');
+      if (!hoursEl || !minutesEl || !secondsEl) return;
+
+      const savedEndTime = localStorage.getItem('offerEndTime');
+      const now = new Date().getTime();
+      let endTime;
+
+      if (savedEndTime && parseInt(savedEndTime, 10) > now) {
+        endTime = parseInt(savedEndTime, 10);
+      } else {
+        endTime = now + 6 * 60 * 60 * 1000;
+        localStorage.setItem('offerEndTime', endTime.toString());
+      }
+
+      function update() {
+        const current = new Date().getTime();
+        let diff = endTime - current;
+
+        if (diff <= 0) {
+          endTime = current + 6 * 60 * 60 * 1000;
+          localStorage.setItem('offerEndTime', endTime.toString());
+          diff = endTime - current;
+        }
+
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+        hoursEl.textContent = String(h).padStart(2, '0');
+        minutesEl.textContent = String(m).padStart(2, '0');
+        secondsEl.textContent = String(s).padStart(2, '0');
+      }
+
+      update();
+      setInterval(update, 1000);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCountdown);
+    } else {
+      initCountdown();
+    }
+  </script>
+</Layout>
