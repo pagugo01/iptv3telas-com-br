@@ -6,8 +6,8 @@ export const siteConfig = {
   tagline: 'IPTV 3 Telas & 2 Telas Simultâneas | Alta Estabilidade em 4K',
   subTagline: 'Plano IPTV 3 telas e 2 telas simultâneas sem travamentos. Assista na Smart TV, celular e TV Box ao mesmo tempo. Mais de 80.000 conteúdos em um só aplicativo.',
   whatsapp: {
-    number: '5551997862095',
-    display: '(51) 99786-2095',
+    number: '5551997965853',
+    display: '(51) 99796-5853',
     defaultMsg: 'Olá! Vim do site iptv3telas.com.br e quero solicitar meu Teste Grátis de 2 e 3 Telas.',
     planMsg: (duration: string, price: string, screens: string) => `Quero o plano de ${duration} por R$ ${price} (${screens})! Vim do iptv3telas.com.br`
   },
